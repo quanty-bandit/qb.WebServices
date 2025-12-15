@@ -1,0 +1,20 @@
+{
+    "name": "qb.WebServices",
+    "rootNamespace": "",
+    "references": [
+        "GUID:324caed91501a9c47a04ebfd87b68794",
+        "GUID:3a61d50eb2789944892c7e6dec768114",
+        "GUID:14d45ebd9e248d44fbd5a8681f39d185",
+        "GUID:c79829deaaa58b748ac932a25a1ecaa6",
+        "GUID:e33bedfd9ec9bc64aafe6dbb8b512b63"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

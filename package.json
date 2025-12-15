@@ -1,0 +1,26 @@
+{
+  "name": "com.quanty-bandit.qb.webservices",
+  "version": "1.0.0",
+  "displayName": "qb.WebServices",
+  "description": "Components for webservices connection",
+  "unity": "6000.2",
+  "gitDependencies": {
+	"com.codewriter.triinspector": "https://github.com/codewriter-packages/Tri-Inspector.git",
+    "com.quanty-bandit.pattern": "https://github.com/quanty-bandit/qb.Pattern.git",
+    "com.quanty-bandit.events": "https://github.com/quanty-bandit/qb.Events.git",
+    "com.quanty-bandit.datas": "https://github.com/quanty-bandit/qb.Datas.git",
+    "com.quanty-bandit.buildinfo": "https://github.com/quanty-bandit/qb.BuildInfo.git",
+	"com.quanty-bandit.utility": "https://github.com/quanty-bandit/qb.Utility.git"
+	
+  },
+  "keywords": [
+    "Ui components",
+    "Image",
+	"Progressbar"
+  ],
+  "author": {
+    "name": "quanty bandit",
+    "email": "pascal@quantybandit.com",
+    "url": "https://quantybandit.com"
+  }
+}
