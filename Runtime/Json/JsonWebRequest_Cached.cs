@@ -93,8 +93,9 @@ namespace qb.Network
 
 #if !UNITY_WEBGL && !UNITY_WEBGL_API
         
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             JsonWebRequest_Cache.Register(this);
             LoadCache();
         }
