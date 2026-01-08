@@ -1,5 +1,8 @@
 namespace qb.Network
 {
+    /// <summary>
+    /// Provides utility methods for manipulating URL query parameters.
+    /// </summary>
     public static class URLParameterUtility
     {
         public static string AddParameters(string url, string parameters)

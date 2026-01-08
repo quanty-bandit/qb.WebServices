@@ -2,10 +2,13 @@ using System;
 using TriInspector;
 using UnityEngine;
 using qb.EnvironmentBuild;
-using qb.Pattern;
 using qb.Datas;
 namespace qb.Network
 {
+    /// <summary>
+    /// Provides a base class for configuring API settings, including versioning, entry point URLs, token management,
+    /// and maintenance state.
+    /// </summary>
     [Serializable]
     public abstract class ApiSettings : ScriptableObject
     {

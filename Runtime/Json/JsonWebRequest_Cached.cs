@@ -19,7 +19,7 @@ using UnityEditor;
 namespace qb.Network
 {
     /// <summary>
-    /// Extended Json request class with tmp management 
+    /// Abstract Json web request class extension with cache management with refresh time to minimize web request calls.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [DeclareBoxGroup("#S",Title ="Cache tweenSettings")]

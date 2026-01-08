@@ -17,10 +17,9 @@ using System.IO;
 namespace qb.Network
 {
     /// <summary>
-    /// Abstract class to manage web request with json as data format
+    /// Abstract class for a singleton scriptable object to manage a web request with json format as data format 
     /// </summary>
-    /// </summary>
-    /// <typeparam paramName="T"></typeparam>
+    /// <typeparam paramName="T">The request response parameter type</typeparam>
     public abstract class JsonWebRequest<T> : SOSingleton<JsonWebRequest<T>>
     {
         #region inspector
