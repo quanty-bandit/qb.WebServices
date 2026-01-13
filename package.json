@@ -1,5 +1,5 @@
 {
-  "name": "com.quanty-bandit.qb.webservices",
+  "name": "com.quanty-bandit.webservices",
   "version": "1.0.0",
   "displayName": "qb.WebServices",
   "description": "Components for webservices connection",
