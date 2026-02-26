@@ -12,7 +12,7 @@ namespace qb.Network.SteamAPI
     {
         public override string ApiEndPoint => "ISteamUserStats/GetPlayerAchievements/v0001/";
 #if UNITY_WEBGL
-        public async Awatable<EJsonWebResponseState> SendRequest(string steamId,string appId)
+        public async Awaitable<EJsonWebResponseState> SendRequest(string steamId,string appId)
 #else
         public async Task<EJsonWebResponseState> SendRequest(string steamId,string appId)
 #endif
