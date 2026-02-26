@@ -1,5 +1,7 @@
 using System;
+#if !UNITY_WEBGL
 using System.Threading.Tasks;
+#endif
 using qb.Pattern;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -312,7 +314,11 @@ namespace qb.Network
         /// <returns>
         /// The final state of the response.
         /// </returns>
+#if UNITY_WEBGL
+        public virtual async Awaitable<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
+#else
         public virtual async Task<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
+#endif
         {
 
             if (StaticJsonSerializerSettings == null)
@@ -387,7 +393,12 @@ namespace qb.Network
                         var operation = request.SendWebRequest();
                         while (!operation.isDone)
                         {
+#if UNITY_WEBGL
+                            await Awaitable.NextFrameAsync();
+                            
+#else
                             await Task.Yield();
+#endif
                         }
                         requestResult = request.result;
                         if (request.result == UnityWebRequest.Result.Success)
@@ -433,9 +444,14 @@ namespace qb.Network
             else
             {
                 while (responseState == EJsonWebResponseState.Pending)
+#if UNITY_WEBGL
+                    await Awaitable.NextFrameAsync();
+                            
+#else
                     await Task.Yield();
+#endif
             }
-            return responseState;
+                return responseState;
 
         }
 
@@ -480,16 +496,25 @@ namespace qb.Network
         /// Waiting for data updated or error during a timeout _duration
         /// </summary>
         /// <param paramName="timeOutDuration">Time out _duration of waiting</param>
+#if UNITY_WEBGL
+        public async Awaitable WaitingForUpdate(float timeOutDuration = 60)
+#else
         public async Task WaitingForUpdate(float timeOutDuration = 60)
+#endif
         {
             float startTime = Time.time;
             while (responseState == EJsonWebResponseState.Uninitialized
                 || responseState == EJsonWebResponseState.Pending
                 || Time.time - startTime >= timeOutDuration)
             {
+#if UNITY_WEBGL
+                await Awaitable.NextFrameAsync();
+                            
+#else
                 await Task.Yield();
+#endif
             }
-            if (Time.time - startTime >= timeOutDuration)
+                if (Time.time - startTime >= timeOutDuration)
                 Debug.LogError($"{name} waiting for update timeout (>= {timeOutDuration})!");
         }
 

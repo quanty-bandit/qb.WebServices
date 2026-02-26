@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
+#if !UNITY_WEBGL
 using System.Threading.Tasks;
+#endif
 using UnityEngine;
 using UnityEngine.Networking;
 namespace qb.Network
@@ -53,7 +55,11 @@ namespace qb.Network
         /// Test the server url is on line
         /// </summary>
         /// <param paramName="url">The server url end point to test</param>
+#if UNITY_WEBGL
+        public static async Awaitable<bool> IsTheServerUrlOnLine(string url)
+#else
         public static async Task<bool> IsTheServerUrlOnLine(string url)
+#endif
         {
             bool result = false; 
             try
@@ -64,7 +70,13 @@ namespace qb.Network
                     var operation = request.SendWebRequest();
                     while (!operation.isDone)
                     {
+#if UNITY_WEBGL
+                       await Awaitable.NextFrameAsync();
+                            
+#else
                         await Task.Yield();
+#endif
+
                     }
                     result = request.result == UnityWebRequest.Result.Success;
                 }

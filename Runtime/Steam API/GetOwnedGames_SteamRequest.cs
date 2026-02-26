@@ -9,8 +9,11 @@ namespace qb.Network.SteamAPI
     public class GetOwnedGames_SteamRequest: SteamUserLikeRequest<OwnedGames>
     {
         public override string ApiEndPoint => "IPlayerService/GetOwnedGames/v0001/";
-
+#if UNITY_WEBGL
+        public async Awaitable<EJsonWebResponseState> SendRequest(string steamId)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string steamId)
+#endif
         {
             this.steamId = steamId;
             return await base.SendRequest(cacheKey:steamId, extraUrlParameters: $"steamid={steamId}&include_appinfo=1");

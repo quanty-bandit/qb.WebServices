@@ -11,8 +11,11 @@ namespace qb.Network.SteamAPI
     public class GetPlayerAchievemments_SteamRequest : SteamUserLikeRequest<PlayerAchievements>
     {
         public override string ApiEndPoint => "ISteamUserStats/GetPlayerAchievements/v0001/";
-
+#if UNITY_WEBGL
+        public async Awatable<EJsonWebResponseState> SendRequest(string steamId,string appId)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string steamId,string appId)
+#endif
         {
             this.steamId = steamId;
             this.appId = appId;

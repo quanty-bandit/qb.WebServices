@@ -17,8 +17,11 @@ namespace qb.Network.SteamAPI
         protected override QueryType RequestType => QueryType.Get;
 
         public override string ApiEndPoint => "ISteamUserStats/GetSchemaForGame/v0002/";
-
+#if UNITY_WEBGL
+        public async Awaitable<EJsonWebResponseState> SendRequest(string appId)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string appId)
+#endif
         {
             this.appId = appId;
             (var langCode, var lang) = LocalizationUtility.GetSelectedLangCodeAndEnglishName(true);

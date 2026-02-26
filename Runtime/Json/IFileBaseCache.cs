@@ -1,4 +1,4 @@
-using UnityEngine;
+
 namespace qb.Cache
 {
     public interface IFileBaseCache

@@ -1,7 +1,9 @@
 using qb.Utility;
 using System;
 using System.Collections.Generic;
+#if !UNITY_WEBGL
 using System.Threading.Tasks;
+#endif
 using TriInspector;
 using UnityEngine;
 
@@ -17,8 +19,11 @@ namespace qb.Network.SteamAPI
         protected override QueryType RequestType => QueryType.Get;
 
         public override string ApiEndPoint => "appdetails/";
-
+#if UNITY_WEBGL
+        public async Awaitable<EJsonWebResponseState> SendRequest(string appIds)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string appIds)
+#endif
         {
             this.appIds = appIds;
             (var langCode, var lang) = LocalizationUtility.GetSelectedLangCodeAndEnglishName(true);

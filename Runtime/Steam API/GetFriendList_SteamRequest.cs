@@ -9,8 +9,11 @@ namespace qb.Network.SteamAPI
     public class GetFriendList_SteamRequest : SteamUserLikeRequest<FriendListContainer>
     {
         public override string ApiEndPoint => "ISteamUser/GetFriendList/v0001/";
-
+#if UNITY_WEBGL
+        public async Awaitable<EJsonWebResponseState> SendRequest(string steamId)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string steamId)
+#endif
         {
             this.steamId = steamId;
             return await base.SendRequest(extraUrlParameters: $"playerId={steamId}");

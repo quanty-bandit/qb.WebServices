@@ -10,8 +10,11 @@ namespace qb.Network.SteamAPI
     {
 
         public override string ApiEndPoint => "ISteamUser/GetPlayerSummaries/v0002/";
-
+#if UNITY_WEBGL
+        public async Awaitable<EJsonWebResponseState> SendRequest(string steamIds)
+#else
         public async Task<EJsonWebResponseState> SendRequest(string steamIds)
+#endif
         {
             this.steamId = steamIds; 
             return await base.SendRequest(cacheKey: steamIds, extraUrlParameters:$"steamIds={steamIds}");

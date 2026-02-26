@@ -1,7 +1,9 @@
 using System;
 using TriInspector;
 using UnityEngine;
+#if !UNITY_WEBGL
 using System.Threading.Tasks;
+#endif
 using UnityEngine.Networking;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
@@ -55,7 +57,12 @@ namespace qb.Network
 
         [NonSerialized]
         protected bool isDirty;
-        public virtual async Task<EJsonWebResponseState> SendRequest(string cacheKey,object parameter = null, string extraUrlParameters = null)
+#if UNITY_WEBGL
+        public virtual async Awaitable<EJsonWebResponseState> SendRequest(string cacheKey, object parameter = null, string extraUrlParameters = null)
+                            
+#else
+        public virtual async Task<EJsonWebResponseState> SendRequest(string cacheKey, object parameter = null, string extraUrlParameters = null)
+#endif
         {
             if (cache.TryGetValue(cacheKey, out CacheEntry entry))
             {
