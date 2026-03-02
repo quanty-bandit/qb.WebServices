@@ -315,9 +315,9 @@ namespace qb.Network
         /// The final state of the response.
         /// </returns>
 #if UNITY_WEBGL
-        public virtual async Awaitable<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
+        protected virtual async Awaitable<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
 #else
-        public virtual async Task<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
+        protected virtual async Task<EJsonWebResponseState> SendRequest(object parameter = null, string extraUrlParameters = null)
 #endif
         {
 
