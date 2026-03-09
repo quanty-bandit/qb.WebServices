@@ -357,6 +357,7 @@ namespace qb.Network
                             : UnityWebRequest.Get(Url)
                         )
                     {
+                        CompleteRequestBeforeSending( request );
                         //if (UseApiSettings && apiSettings != null && apiSettings.UseUrlParameters)
                         //    request.url = apiSettings.AddUrlParameters(request.url);
 /*
@@ -454,7 +455,9 @@ namespace qb.Network
                 return responseState;
 
         }
-
+        protected virtual void CompleteRequestBeforeSending(UnityWebRequest request)
+        {
+        }
         protected void InitStaticJSonSerializerSetting()
         {
             var defaultJsonContratResolver = new DefaultContractResolver();
