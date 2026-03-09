@@ -359,7 +359,7 @@ namespace qb.Network
                     {
                         //if (UseApiSettings && apiSettings != null && apiSettings.UseUrlParameters)
                         //    request.url = apiSettings.AddUrlParameters(request.url);
-
+/*
 #if PLATFORM_WEBGL || UNITY_WEBGL
                         request.SetRequestHeader("Access-Control-Allow-Credentials", "true");
                         request.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -367,7 +367,7 @@ namespace qb.Network
                         request.SetRequestHeader("Access-Control-Allow-Methods", "*");
                         request.SetRequestHeader("Access-Control-Allow-Headers", "*");
 #endif
-
+*/
                         if (UseUrlParameters)
                             request.url = AddUrlParameters(request.url);
 
